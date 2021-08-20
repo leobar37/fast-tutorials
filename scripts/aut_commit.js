@@ -15,3 +15,4 @@ const dd = shell.exec(`git commit -am "Auto-commit ${ram()}"`);
 if (!dd) {
   console.log("commit result " + dd);
 }
+console.log(dd);
