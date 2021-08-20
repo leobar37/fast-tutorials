@@ -1,1 +1,1 @@
-# Welcome to react tutorials based on next
+# React tutorials
