@@ -13,6 +13,5 @@ shell.exec("git add .");
 const dd = shell.exec(`git commit -am "Auto-commit ${ram()}"`).code;
 
 if (!dd) {
-  console.log("commit result " + dd);
+  shell.echo("commit correctly generated");
 }
-console.log(dd);
