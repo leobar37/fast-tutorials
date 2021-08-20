@@ -1,29 +1,23 @@
 import * as React from "react";
 import { useState, useEffect, useCallback } from "react";
-import { Button } from "@chakra-ui/react";
-function Movie({
-  title,
-  releaseDate,
-  memo,
-  setLike,
-}: {
+type MovieProps = {
   title: string;
-  releaseDate: string;
+  description: string;
   memo: boolean;
   setLike: (title: string) => void;
-}) {
-  console.log(`${memo ? "<MemoizedMovie>" : "<Movie>"} rendered`);
+};
 
+function Movie({ title, description, memo, setLike }: MovieProps) {
   return (
     <div>
       <div>Movie title: {title}</div>
-      <div>Release date: {releaseDate}</div>
-      <Button onClick={() => setLike(title)}> set like </Button>
+      <div>Release date: {description}</div>
+      <button onClick={() => setLike(title)}> set like </button>
     </div>
   );
 }
 
-const MemoizeMovie = React.memo(Movie);
+const MemoizedMovie = React.memo(Movie);
 
 function index() {
   const [, setToggle] = useState(true);
@@ -35,21 +29,22 @@ function index() {
     return () => clearInterval(id);
   }, []);
 
-  // now  setLike is the same instace in each render
-  const setLike = useCallback((title: string) => {}, []);
+  const setLike = useCallback((title: string) => {
+    console.log(title);
+  }, []);
 
   return (
     <div>
       <Movie
         setLike={setLike}
         title="Holu"
-        releaseDate="releaseDate"
+        description="releaseDate"
         memo={false}
       />
-      <MemoizeMovie
+      <MemoizedMovie
         setLike={setLike}
         title="Holu 2"
-        releaseDate="releaseDate 2"
+        description="releaseDate 2"
         memo={true}
       />
     </div>

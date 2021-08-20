@@ -1,16 +1,9 @@
+import { Button, Flex, Input, Text } from "@chakra-ui/react";
 import * as React from "react";
-import {
-  useState,
-  useEffect,
-  useCallback,
-  memo,
-  useMemo,
-  ChangeEventHandler,
-} from "react";
-import { Button, Box, Text, Flex, Input } from "@chakra-ui/react";
+import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
 
 const factorial = (n: number): number => {
-  console.log(`factorial function of ${n} called`);
+  console.log("call factorial");
 
   return n <= 0 ? 1 : n * factorial(n - 1);
 };
@@ -18,17 +11,17 @@ const factorial = (n: number): number => {
 function index() {
   const [count, setCount] = useState(0);
   const [query, setQuery] = useState(0);
-  const onClickItem = useCallback((title: number) => {
-    console.log("clicked in title", title);
-  }, []);
+
   const resultFactorial = useMemo(() => factorial(query), [query]);
+
   useEffect(() => {
     console.log("re render  pattern");
   });
-  const chanqueQuery: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const chanqueValue: ChangeEventHandler<HTMLInputElement> = (e) => {
     const val = e.target.value;
     setQuery(Number(val));
   };
+
   return (
     <Flex
       width="100vw"
@@ -41,7 +34,7 @@ function index() {
       </Button>
       <Input
         value={query}
-        onChange={chanqueQuery}
+        onChange={chanqueValue}
         placeholder="Query for search"
         maxWidth="250px"
       />

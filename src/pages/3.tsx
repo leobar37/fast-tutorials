@@ -24,7 +24,7 @@ const usePosts = (terms: string) => {
       .then((posts) => {
         setPosts(posts);
       });
-  }, []);
+  }, [terms]);
 
   return posts;
 };
@@ -43,7 +43,7 @@ const MyPostsList = ({
   });
 
   const item = (item: Post) => {
-    console.log("item");
+    console.log("item render");
 
     return (
       <Box
@@ -74,10 +74,11 @@ function index() {
   }, []);
 
   useEffect(() => {
-    console.log("re render  pattern");
+    console.log("render  parent");
   });
   const chanqueQuery: ChangeEventHandler<HTMLInputElement> = (e) => {
     const val = e.target.value;
+
     setQuery(val);
   };
 
@@ -89,7 +90,7 @@ function index() {
       justifyContent="center"
     >
       <Button my={2} onClick={() => setCount(count + 1)}>
-        test
+        re render
       </Button>
       <Input
         value={query}
