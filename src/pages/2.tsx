@@ -35,6 +35,7 @@ function index() {
     return () => clearInterval(id);
   }, []);
 
+  // now  setLike is the same instace in each render
   const setLike = useCallback((title: string) => {}, []);
 
   return (
