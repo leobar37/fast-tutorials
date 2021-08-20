@@ -1,1 +1,1 @@
-# React tutorials
+# React memoization tutorial 🤙
